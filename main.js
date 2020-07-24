@@ -1,5 +1,6 @@
 function init() {
     const scene = new THREE.Scene();
+    const gui = new dat.GUI();
 
     const box = getBox(1, 1, 1);
     const plane = getPlane(4);
@@ -21,6 +22,11 @@ function init() {
 
     box.position.y = box.geometry.parameters.height / 2;
     plane.rotation.x = Math.PI / 2;
+    pointLight.intensity = 2;
+
+    gui.add(pointLight, 'intensity', 0, 10).name("Light intensity")
+    gui.add(pointLight.position, 'x', -5, 5).name("Light X")
+    gui.add(pointLight.position, 'y', 0, 5).name("Light Y")
 
 
     const camera = new THREE.PerspectiveCamera(
